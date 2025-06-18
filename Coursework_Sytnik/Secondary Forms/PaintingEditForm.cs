@@ -64,6 +64,7 @@ namespace Coursework_Sytnik
                 numericUpDownYear.Value = DateTime.Now.Year;
             }
 
+            numericUpDownYear.Maximum = DateTime.Now.Year;
             btnSave.Click += btnSave_Click;
             btnCancel.Click += btnCancel_Click;
         }
@@ -80,7 +81,16 @@ namespace Coursework_Sytnik
                 MessageBox.Show("Будь ласка, виберіть художника.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if (numericUpDownYear.Value > DateTime.Now.Year)
+            {
+                MessageBox.Show($"Рік створення картини не може бути пізніше за {DateTime.Now.Year} рік.", "Некоректний рік", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtGenre.Text))
+            {
+                MessageBox.Show("Будь ласка, введіть жанр або стиль картини.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _currentPainting.Title = txtTitle.Text;
             _currentPainting.CreationYear = (int)numericUpDownYear.Value;
             _currentPainting.Genre = txtGenre.Text;

@@ -122,17 +122,36 @@ namespace Coursework_Sytnik
                 MessageBox.Show("Назва музею не може бути порожньою.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            if (string.IsNullOrWhiteSpace(txtAddress.Text))
+            {
+                MessageBox.Show("Будь ласка, введіть адресу музею.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCity.Text))
+            {
+                MessageBox.Show("Будь ласка, введіть місто музею.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCountry.Text))
+            {
+                MessageBox.Show("Будь ласка, введіть країну, де знаходиться музей.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             double x, y;
 
-            if (!double.TryParse(txtCoordinateX.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out x) &&
-                !double.TryParse(txtCoordinateX.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out x))
+            string coordinateXText = txtCoordinateX.Text.Replace(',', '.');
+            if (!double.TryParse(coordinateXText, NumberStyles.Any, CultureInfo.InvariantCulture, out x))
             {
                 MessageBox.Show("Будь ласка, введіть дійсне число для координати X.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!double.TryParse(txtCoordinateY.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out y) &&
-                !double.TryParse(txtCoordinateY.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out y))
+            string coordinateYText = txtCoordinateY.Text.Replace(',', '.');
+            if (!double.TryParse(coordinateYText, NumberStyles.Any, CultureInfo.InvariantCulture, out y))
             {
                 MessageBox.Show("Будь ласка, введіть дійсне число для координати Y.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

@@ -50,11 +50,9 @@ namespace Coursework_Sytnik.Classes
             header.Format.Alignment = ParagraphAlignment.Center;
             header.Format.SpaceAfter = "0.5cm";
 
-            Paragraph shopInfo = section.AddParagraph("Застосунок 'Музей'");
+            Paragraph shopInfo = section.AddParagraph("Україна, м. Харків");
             shopInfo.Format.Font.Size = 10;
             shopInfo.Format.Alignment = ParagraphAlignment.Center;
-            shopInfo.AddLineBreak();
-            shopInfo.AddText("Україна, м. Харків");
             shopInfo.AddLineBreak();
             shopInfo.AddText("Дата формування чека: " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
             shopInfo.Format.SpaceAfter = "1cm";

@@ -267,11 +267,7 @@ namespace Coursework_Sytnik
                                                  .Select(pfsd => new PaintingForSale { PaintingId = pfsd.PaintingId, Price = pfsd.Price })
                                                  .ToList();
 
-            if (!_currentEvent.PaintingsForSale.Any())
-            {
-                MessageBox.Show("Будь ласка, додайте хоча б одну картину для продажу в цю подію.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+
 
             try
             {
