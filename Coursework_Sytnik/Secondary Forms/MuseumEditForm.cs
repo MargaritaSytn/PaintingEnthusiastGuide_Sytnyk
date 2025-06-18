@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,8 +45,8 @@ namespace Coursework_Sytnik
                 txtAddress.Text = _currentMuseum.Address;
                 txtCity.Text = _currentMuseum.City;
                 txtCountry.Text = _currentMuseum.Country;
-                numericUpDownX.Value = (decimal)_currentMuseum.CoordinateX;
-                numericUpDownY.Value = (decimal)_currentMuseum.CoordinateY;
+                txtCoordinateX.Text = _currentMuseum.CoordinateX.ToString(CultureInfo.InvariantCulture);
+                txtCoordinateY.Text = _currentMuseum.CoordinateY.ToString(CultureInfo.InvariantCulture);
 
                 LoadAllPaintings();
                 InitializePaintingListBoxes();
@@ -69,6 +70,8 @@ namespace Coursework_Sytnik
 
         private void InitializePaintingListBoxes()
         {
+            var currentMuseumPaintingIds = _currentMuseum?.PaintingIds ?? new List<int>();
+
             _selectedPaintingsInForm = _allPaintings
                 .Where(p => _currentMuseum.PaintingIds.Contains(p.Id))
                 .ToList();
@@ -119,13 +122,28 @@ namespace Coursework_Sytnik
                 MessageBox.Show("Назва музею не може бути порожньою.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            double x, y;
+
+            if (!double.TryParse(txtCoordinateX.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out x) &&
+                !double.TryParse(txtCoordinateX.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out x))
+            {
+                MessageBox.Show("Будь ласка, введіть дійсне число для координати X.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!double.TryParse(txtCoordinateY.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out y) &&
+                !double.TryParse(txtCoordinateY.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out y))
+            {
+                MessageBox.Show("Будь ласка, введіть дійсне число для координати Y.", "Помилка введення", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             _currentMuseum.Name = txtName.Text;
             _currentMuseum.Address = txtAddress.Text;
             _currentMuseum.City = txtCity.Text;
             _currentMuseum.Country = txtCountry.Text;
-            _currentMuseum.CoordinateX = (double)numericUpDownX.Value;
-            _currentMuseum.CoordinateY = (double)numericUpDownY.Value;
+            _currentMuseum.CoordinateX = x; 
+            _currentMuseum.CoordinateY = y;
 
             List<int> oldPaintingIdsForMuseum = new List<int>();
             if (_currentMuseum.Id != 0)

@@ -115,18 +115,18 @@
             // 
             availablePaintingsListBox.FormattingEnabled = true;
             availablePaintingsListBox.HorizontalScrollbar = true;
-            availablePaintingsListBox.Location = new Point(101, 217);
+            availablePaintingsListBox.Location = new Point(89, 217);
             availablePaintingsListBox.Name = "availablePaintingsListBox";
-            availablePaintingsListBox.Size = new Size(267, 104);
+            availablePaintingsListBox.Size = new Size(302, 104);
             availablePaintingsListBox.TabIndex = 5;
             // 
             // paintingsInEventListBox
             // 
             paintingsInEventListBox.FormattingEnabled = true;
             paintingsInEventListBox.HorizontalScrollbar = true;
-            paintingsInEventListBox.Location = new Point(101, 386);
+            paintingsInEventListBox.Location = new Point(89, 386);
             paintingsInEventListBox.Name = "paintingsInEventListBox";
-            paintingsInEventListBox.Size = new Size(267, 104);
+            paintingsInEventListBox.Size = new Size(302, 104);
             paintingsInEventListBox.TabIndex = 8;
             // 
             // btnSave

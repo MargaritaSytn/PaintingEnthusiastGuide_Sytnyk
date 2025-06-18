@@ -53,7 +53,10 @@ namespace Coursework_Sytnik
             foreach (DataGridViewColumn column in paintingsDataGridView.Columns)
             {
                 column.ReadOnly = true;
+                column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
+            paintingsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            paintingsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         public void RefreshPaintingsGrid()
@@ -99,15 +102,6 @@ namespace Coursework_Sytnik
 
             paintingsDataGridView.DataSource = null;
             paintingsDataGridView.DataSource = filteredDisplayList.ToList();
-        }
-
-        private void btnAddPainting_Click(object sender, EventArgs e)
-        {
-            var editForm = new PaintingEditForm();
-            if (editForm.ShowDialog() == DialogResult.OK)
-            {
-                RefreshPaintingsGrid();
-            }
         }
 
         private void btnEditPainting_Click(object sender, EventArgs e)
@@ -229,6 +223,20 @@ namespace Coursework_Sytnik
             {
                 MessageBox.Show("Будь ласка, виберіть картину для експорту.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnAddPainting_Click_1(object sender, EventArgs e)
+        {
+            var editForm = new PaintingEditForm();
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                RefreshPaintingsGrid();
+            }
+        }
+
+        private void paintingsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

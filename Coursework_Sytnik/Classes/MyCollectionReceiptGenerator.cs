@@ -92,11 +92,6 @@ namespace Coursework_Sytnik.Classes
             codeParagraph.Format.Alignment = ParagraphAlignment.Center;
             codeParagraph.AddText($"Унікальний код чека: {receiptCode}");
             codeParagraph.Format.SpaceAfter = "0.5cm";
-
-            Paragraph footer = section.AddParagraph("Дякуємо за використання застосунку!");
-            footer.Format.Font.Size = 9;
-            footer.Format.Alignment = ParagraphAlignment.Center;
-
             SaveDocument(document, painting.Title);
         }
 

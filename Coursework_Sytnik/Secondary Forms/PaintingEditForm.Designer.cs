@@ -43,32 +43,32 @@
             // 
             // txtTitle
             // 
-            txtTitle.Location = new Point(239, 16);
+            txtTitle.Location = new Point(201, 16);
             txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(125, 27);
+            txtTitle.Size = new Size(163, 27);
             txtTitle.TabIndex = 0;
             // 
             // txtGenre
             // 
-            txtGenre.Location = new Point(239, 59);
+            txtGenre.Location = new Point(201, 59);
             txtGenre.Name = "txtGenre";
-            txtGenre.Size = new Size(125, 27);
+            txtGenre.Size = new Size(163, 27);
             txtGenre.TabIndex = 1;
             // 
             // numericUpDownYear
             // 
-            numericUpDownYear.Location = new Point(239, 96);
+            numericUpDownYear.Location = new Point(201, 96);
             numericUpDownYear.Maximum = new decimal(new int[] { 3000, 0, 0, 0 });
             numericUpDownYear.Name = "numericUpDownYear";
-            numericUpDownYear.Size = new Size(150, 27);
+            numericUpDownYear.Size = new Size(188, 27);
             numericUpDownYear.TabIndex = 2;
             // 
             // cmbArtists
             // 
             cmbArtists.FormattingEnabled = true;
-            cmbArtists.Location = new Point(239, 135);
+            cmbArtists.Location = new Point(201, 135);
             cmbArtists.Name = "cmbArtists";
-            cmbArtists.Size = new Size(151, 28);
+            cmbArtists.Size = new Size(189, 28);
             cmbArtists.TabIndex = 3;
             // 
             // btnSave

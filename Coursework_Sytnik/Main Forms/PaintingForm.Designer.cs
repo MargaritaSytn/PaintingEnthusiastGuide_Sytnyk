@@ -53,6 +53,7 @@
             paintingsDataGridView.RowHeadersWidth = 51;
             paintingsDataGridView.Size = new Size(540, 336);
             paintingsDataGridView.TabIndex = 0;
+            paintingsDataGridView.CellContentClick += paintingsDataGridView_CellContentClick;
             // 
             // btnGoToArtists
             // 
@@ -81,6 +82,7 @@
             btnAddPainting.TabIndex = 3;
             btnAddPainting.Text = "Додати картину ";
             btnAddPainting.UseVisualStyleBackColor = true;
+            btnAddPainting.Click += btnAddPainting_Click_1;
             // 
             // btnEditPainting
             // 

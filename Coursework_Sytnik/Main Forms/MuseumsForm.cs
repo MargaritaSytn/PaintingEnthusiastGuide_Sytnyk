@@ -57,7 +57,10 @@ namespace Coursework_Sytnik
             foreach (DataGridViewColumn column in museumsDataGridView.Columns)
             {
                 column.ReadOnly = true;
+                column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
+            museumsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            museumsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         public void RefreshMuseumsGrid()

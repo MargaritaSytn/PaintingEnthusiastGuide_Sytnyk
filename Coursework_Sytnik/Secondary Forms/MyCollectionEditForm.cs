@@ -62,47 +62,58 @@ namespace Coursework_Sytnik
             btnSave.Click += btnSave_Click;
             btnCancel.Click += btnCancel_Click;
 
-            lblAvailablePaintings.Visible = false;
-            cmbAvailablePaintings.Visible = false;
-            lblPaintingTitle.Visible = false;
-            lblPurchasePrice.Visible = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            dtpPurchaseDate.Visible = true;
+            dtpPurchaseDate.Enabled = true;
 
             btnSave.Enabled = false;
 
             if (_isNewItem)
             {
+                this.Text = "Додати картину в колекцію";
+
                 lblAuctionEvent.Visible = true;
                 cmbAuctionEvents.Visible = true;
-                dtpPurchaseDate.Visible = true;
-                dtpPurchaseDate.Enabled = true;
+                lblAvailablePaintings.Visible = true;
+                cmbAvailablePaintings.Visible = true;
+                lblPaintingTitle.Visible = true;
+                lblPurchasePrice.Visible = true;
+
+                lblPaintingTitle.Text = "Назва: (Оберіть картину)";
+                lblPurchasePrice.Text = "Ціна покупки: (Оберіть картину)"; 
 
                 PopulateAuctionComboBox();
+
                 cmbAuctionEvents.SelectedIndexChanged += cmbAuctionEvents_SelectedIndexChanged;
+                cmbAvailablePaintings.SelectedIndexChanged += cmbAvailablePaintings_SelectedIndexChanged;
             }
-            else
+            else 
             {
+                this.Text = "Редагувати картину в колекції";
+
                 lblAuctionEvent.Visible = false;
                 cmbAuctionEvents.Visible = false;
+                lblAvailablePaintings.Visible = false;
+                cmbAvailablePaintings.Visible = false;
+
+                lblPaintingTitle.Visible = true;
+                lblPurchasePrice.Visible = true;
 
                 var painting = DataManager.Instance.GetPaintingById(_currentCollectionItem.PaintingId);
                 lblPaintingTitle.Text = $"Назва: {painting?.Title ?? "Невідомо"}";
                 lblPurchasePrice.Text = $"Ціна покупки: {_currentCollectionItem.PurchasePrice:C}";
-                dtpPurchaseDate.Value = _currentCollectionItem.PurchaseDate;
+                dtpPurchaseDate.Value = _currentCollectionItem.PurchaseDate; 
 
-                lblPaintingTitle.Visible = true;
-                lblPurchasePrice.Visible = true;
-                dtpPurchaseDate.Visible = true;
-                dtpPurchaseDate.Enabled = true;
-
-                btnSave.Enabled = true;
+                btnSave.Enabled = true; 
             }
         }
 
         private void PopulateAuctionComboBox()
         {
             var availableEvents = DataManager.Instance.CollectionEvents
-                                                     .Where(ce => ce.PaintingsForSale.Any())
-                                                     .ToList();
+                                                    .Where(ce => ce.PaintingsForSale.Any())
+                                                    .ToList();
 
             var eventsForComboBox = new List<CollectionEvent>();
             eventsForComboBox.Add(new CollectionEvent { Id = 0, Name = "-- Виберіть аукціон --" });
@@ -116,11 +127,11 @@ namespace Coursework_Sytnik
 
         private void cmbAuctionEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cmbAvailablePaintings.SelectedIndexChanged -= cmbAvailablePaintings_SelectedIndexChanged;
+
             cmbAvailablePaintings.DataSource = null;
-            lblAvailablePaintings.Visible = false;
-            cmbAvailablePaintings.Visible = false;
-            lblPaintingTitle.Visible = false;
-            lblPurchasePrice.Visible = false;
+            lblPaintingTitle.Visible = false; 
+            lblPurchasePrice.Visible = false; 
             btnSave.Enabled = false;
 
             if (cmbAuctionEvents.SelectedItem is CollectionEvent selectedEvent && selectedEvent.Id != 0)
@@ -141,14 +152,30 @@ namespace Coursework_Sytnik
 
                 lblAvailablePaintings.Visible = true;
                 cmbAvailablePaintings.Visible = true;
+                lblPaintingTitle.Visible = true; 
+                lblPurchasePrice.Visible = true;
 
-                cmbAvailablePaintings.SelectedIndexChanged -= cmbAvailablePaintings_SelectedIndexChanged;
                 cmbAvailablePaintings.SelectedIndexChanged += cmbAvailablePaintings_SelectedIndexChanged;
 
                 if (paintingsInEvent.Any())
                 {
                     cmbAvailablePaintings.SelectedIndex = 0;
                 }
+                else
+                {
+                    lblPaintingTitle.Text = "Назва: (Немає картин)";
+                    lblPurchasePrice.Text = "Ціна покупки: (Немає картин)";
+                    btnSave.Enabled = false;
+                    MessageBox.Show("На цьому аукціоні немає доступних картин для додавання.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                lblAvailablePaintings.Visible = false;
+                cmbAvailablePaintings.Visible = false;
+                lblPaintingTitle.Visible = false;
+                lblPurchasePrice.Visible = false;
+                btnSave.Enabled = false;
             }
         }
 
@@ -158,7 +185,7 @@ namespace Coursework_Sytnik
             {
                 _currentCollectionItem.PaintingId = selectedPainting.PaintingId;
                 _currentCollectionItem.PurchasePrice = selectedPainting.Price;
-                _currentCollectionItem.PurchaseDate = DateTime.Now;
+                _currentCollectionItem.PurchaseDate = DateTime.Now; 
                 _currentCollectionItem.SourceEventName = selectedPainting.SourceEventName;
 
                 lblPaintingTitle.Text = $"Назва: {selectedPainting.PaintingTitle}";
@@ -218,6 +245,14 @@ namespace Coursework_Sytnik
         }
 
         private void MyCollectionEditForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbAvailablePaintings_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+        }
+
+        private void lblPurchasePrice_Click(object sender, EventArgs e)
         {
         }
     }

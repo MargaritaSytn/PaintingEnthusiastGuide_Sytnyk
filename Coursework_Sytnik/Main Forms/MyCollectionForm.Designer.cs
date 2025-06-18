@@ -30,7 +30,6 @@
         {
             dataGridViewMyCollection = new DataGridView();
             btnAdd = new Button();
-            btnEdit = new Button();
             btnDelete = new Button();
             btnToMyCollection = new Button();
             btnGoToCollectionEvents = new Button();
@@ -48,11 +47,12 @@
             // dataGridViewMyCollection
             // 
             dataGridViewMyCollection.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMyCollection.Location = new Point(12, 102);
+            dataGridViewMyCollection.Location = new Point(11, 102);
             dataGridViewMyCollection.Name = "dataGridViewMyCollection";
             dataGridViewMyCollection.RowHeadersWidth = 51;
             dataGridViewMyCollection.Size = new Size(540, 336);
             dataGridViewMyCollection.TabIndex = 0;
+            dataGridViewMyCollection.CellContentClick += dataGridViewMyCollection_CellContentClick;
             // 
             // btnAdd
             // 
@@ -63,18 +63,9 @@
             btnAdd.Text = "Придбати картину ";
             btnAdd.UseVisualStyleBackColor = true;
             // 
-            // btnEdit
-            // 
-            btnEdit.Location = new Point(561, 136);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(229, 29);
-            btnEdit.TabIndex = 2;
-            btnEdit.Text = "Редагувати придбану картину";
-            btnEdit.UseVisualStyleBackColor = true;
-            // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(566, 171);
+            btnDelete.Location = new Point(569, 136);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(222, 29);
             btnDelete.TabIndex = 3;
@@ -193,7 +184,6 @@
             Controls.Add(btnGoToPaintings);
             Controls.Add(btnGoToArtists);
             Controls.Add(btnDelete);
-            Controls.Add(btnEdit);
             Controls.Add(btnAdd);
             Controls.Add(dataGridViewMyCollection);
             Name = "MyCollectionForm";
@@ -208,7 +198,6 @@
 
         private DataGridView dataGridViewMyCollection;
         private Button btnAdd;
-        private Button btnEdit;
         private Button btnDelete;
         private Button btnToMyCollection;
         private Button btnGoToCollectionEvents;

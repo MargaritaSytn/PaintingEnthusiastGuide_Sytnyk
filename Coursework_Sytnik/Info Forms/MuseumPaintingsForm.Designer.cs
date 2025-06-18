@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridViewPaintings = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewPaintings).BeginInit();
+            paintingsDataGridView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)paintingsDataGridView).BeginInit();
             SuspendLayout();
             // 
-            // dataGridViewPaintings
+            // paintingsDataGridView
             // 
-            dataGridViewPaintings.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPaintings.Location = new Point(12, 12);
-            dataGridViewPaintings.Name = "dataGridViewPaintings";
-            dataGridViewPaintings.RowHeadersWidth = 51;
-            dataGridViewPaintings.Size = new Size(434, 217);
-            dataGridViewPaintings.TabIndex = 0;
+            paintingsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            paintingsDataGridView.Location = new Point(12, 12);
+            paintingsDataGridView.Name = "paintingsDataGridView";
+            paintingsDataGridView.RowHeadersWidth = 51;
+            paintingsDataGridView.Size = new Size(434, 217);
+            paintingsDataGridView.TabIndex = 0;
             // 
             // MuseumPaintingsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(458, 241);
-            Controls.Add(dataGridViewPaintings);
+            Controls.Add(paintingsDataGridView);
             Name = "MuseumPaintingsForm";
             Text = "Список картин музею";
-            ((System.ComponentModel.ISupportInitialize)dataGridViewPaintings).EndInit();
+            ((System.ComponentModel.ISupportInitialize)paintingsDataGridView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridViewPaintings;
+        private DataGridView paintingsDataGridView;
     }
 }

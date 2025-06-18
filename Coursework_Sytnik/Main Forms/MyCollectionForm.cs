@@ -19,10 +19,15 @@ namespace Coursework_Sytnik
             InitializeComponent();
             this.Load += MyCollectionForm_Load;
             this.btnAdd.Click += btnAdd_Click;
-            this.btnEdit.Click += btnEdit_Click;
             this.btnDelete.Click += btnDelete_Click;
+            InitializeMyCollectionDataGridView();
         }
-
+        private void InitializeMyCollectionDataGridView()
+        {
+            dataGridViewMyCollection.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridViewMyCollection.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewMyCollection.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
         private void MyCollectionForm_Load(object sender, EventArgs e)
         {
             RefreshMyCollectionGrid();
@@ -60,16 +65,43 @@ namespace Coursework_Sytnik
             dataGridViewMyCollection.DataSource = null;
             dataGridViewMyCollection.DataSource = myCollectionData;
 
-            dataGridViewMyCollection.Columns["Id"].Visible = false;
-            dataGridViewMyCollection.Columns["PaintingTitle"].HeaderText = "Назва картини";
-            dataGridViewMyCollection.Columns["ArtistName"].HeaderText = "Художник";
-            dataGridViewMyCollection.Columns["PurchasePrice"].HeaderText = "Ціна покупки";
-            dataGridViewMyCollection.Columns["PurchasePrice"].DefaultCellStyle.Format = "C";
-            dataGridViewMyCollection.Columns["PurchaseDate"].HeaderText = "Дата покупки";
-            dataGridViewMyCollection.Columns["SourceEventName"].HeaderText = "Джерело (Аукціон/Подія)";
+            if (dataGridViewMyCollection.Columns.Contains("Id"))
+                dataGridViewMyCollection.Columns["Id"].Visible = false;
 
-            dataGridViewMyCollection.AutoResizeColumns();
+            if (dataGridViewMyCollection.Columns.Contains("PaintingTitle"))
+            {
+                dataGridViewMyCollection.Columns["PaintingTitle"].HeaderText = "Назва картини";
+                dataGridViewMyCollection.Columns["PaintingTitle"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+            }
+
+            if (dataGridViewMyCollection.Columns.Contains("ArtistName"))
+            {
+                dataGridViewMyCollection.Columns["ArtistName"].HeaderText = "Художник";
+                dataGridViewMyCollection.Columns["ArtistName"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+
+            if (dataGridViewMyCollection.Columns.Contains("PurchasePrice"))
+            {
+                dataGridViewMyCollection.Columns["PurchasePrice"].HeaderText = "Ціна покупки";
+                dataGridViewMyCollection.Columns["PurchasePrice"].DefaultCellStyle.Format = "C";
+            }
+
+            if (dataGridViewMyCollection.Columns.Contains("PurchaseDate"))
+            {
+                dataGridViewMyCollection.Columns["PurchaseDate"].HeaderText = "Дата покупки";
+                dataGridViewMyCollection.Columns["PurchaseDate"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+
+            if (dataGridViewMyCollection.Columns.Contains("SourceEventName"))
+            {
+                dataGridViewMyCollection.Columns["SourceEventName"].HeaderText = "Джерело (Аукціон/Подія)";
+                dataGridViewMyCollection.Columns["SourceEventName"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+
+            dataGridViewMyCollection.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
+
 
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -80,25 +112,6 @@ namespace Coursework_Sytnik
                 {
                     RefreshMyCollectionGrid();
                 }
-            }
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewMyCollection.SelectedRows.Count > 0)
-            {
-                int itemId = (int)dataGridViewMyCollection.SelectedRows[0].Cells["Id"].Value;
-                using (var form = new MyCollectionEditForm(itemId))
-                {
-                    if (form.ShowDialog() == DialogResult.OK)
-                    {
-                        RefreshMyCollectionGrid();
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Будь ласка, виберіть картину для редагування.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -196,6 +209,11 @@ namespace Coursework_Sytnik
             {
                 MessageBox.Show("Будь ласка, виберіть картину у своїй колекції для створення чека.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void dataGridViewMyCollection_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

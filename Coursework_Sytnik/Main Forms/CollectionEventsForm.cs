@@ -27,7 +27,6 @@ namespace Coursework_Sytnik
             btnGoToPaintings.Click += btnGoToPaintings_Click;
             btnGoToMuseums.Click += btnGoToMuseums_Click;
         }
-
         public class CollectionEventDisplay
         {
             public int Id { get; set; }
@@ -45,6 +44,11 @@ namespace Coursework_Sytnik
         {
             collectionEventsDataGridView.AutoGenerateColumns = false;
             collectionEventsDataGridView.Columns.Clear();
+            collectionEventsDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            collectionEventsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            collectionEventsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            collectionEventsDataGridView.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            collectionEventsDataGridView.AutoResizeColumnHeadersHeight();
 
             collectionEventsDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Name", HeaderText = "Назва/Ім'я події" });
             collectionEventsDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "EventTypeDisplay", HeaderText = "Тип заходу" });

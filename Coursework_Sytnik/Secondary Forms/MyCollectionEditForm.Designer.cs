@@ -50,14 +50,14 @@
             // 
             // dtpPurchaseDate
             // 
-            dtpPurchaseDate.Location = new Point(62, 190);
+            dtpPurchaseDate.Location = new Point(65, 223);
             dtpPurchaseDate.Name = "dtpPurchaseDate";
             dtpPurchaseDate.Size = new Size(250, 27);
             dtpPurchaseDate.TabIndex = 5;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(67, 251);
+            btnSave.Location = new Point(70, 284);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(94, 29);
             btnSave.TabIndex = 7;
@@ -66,7 +66,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(208, 251);
+            btnCancel.Location = new Point(211, 284);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 29);
             btnCancel.TabIndex = 8;
@@ -98,6 +98,7 @@
             cmbAvailablePaintings.Name = "cmbAvailablePaintings";
             cmbAvailablePaintings.Size = new Size(194, 28);
             cmbAvailablePaintings.TabIndex = 11;
+            cmbAvailablePaintings.SelectedIndexChanged += cmbAvailablePaintings_SelectedIndexChanged_1;
             // 
             // lblPaintingTitle
             // 
@@ -111,16 +112,17 @@
             // lblPurchasePrice
             // 
             lblPurchasePrice.AutoSize = true;
-            lblPurchasePrice.Location = new Point(102, 117);
+            lblPurchasePrice.Location = new Point(16, 154);
             lblPurchasePrice.Name = "lblPurchasePrice";
             lblPurchasePrice.Size = new Size(50, 20);
             lblPurchasePrice.TabIndex = 4;
             lblPurchasePrice.Text = "label2";
+            lblPurchasePrice.Click += lblPurchasePrice_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(127, 165);
+            label1.Location = new Point(130, 198);
             label1.Name = "label1";
             label1.Size = new Size(123, 20);
             label1.TabIndex = 12;
@@ -130,7 +132,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(379, 292);
+            ClientSize = new Size(379, 332);
             Controls.Add(label1);
             Controls.Add(cmbAvailablePaintings);
             Controls.Add(lblAvailablePaintings);

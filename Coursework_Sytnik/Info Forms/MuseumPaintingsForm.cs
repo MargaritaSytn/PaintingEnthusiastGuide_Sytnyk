@@ -46,8 +46,12 @@ namespace Coursework_Sytnik
                 })
                 .ToList();
 
-            dataGridViewPaintings.DataSource = paintings;
+            paintingsDataGridView.DataSource = paintings;
             this.Text = $"Картини в музеї \"{museum.Name}\"";
+
+            paintingsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            paintingsDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            paintingsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
     }
 }
